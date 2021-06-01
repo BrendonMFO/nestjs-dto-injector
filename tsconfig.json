@@ -9,8 +9,9 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
-    "experimentalDecorators": true,
+    "experimentalDecorators": true
   },
   "exclude": [
     "node_modules",

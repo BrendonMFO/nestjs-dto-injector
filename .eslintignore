@@ -1,4 +1,5 @@
-/dist
+/lib
+wallaby.js
 .eslintrc.js
 jest.config.js
-test/config/jest-e2e.config.js
+test/jest-setup-file.ts
