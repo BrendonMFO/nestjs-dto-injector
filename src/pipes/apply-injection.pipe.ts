@@ -14,13 +14,16 @@ export class ApplyInjectionPipe implements PipeTransform {
     if (!value || metadata.type === 'custom') {
       return value;
     }
-    const instance = plainToClass(metadata.metatype as ClassConstructor<any>, value);
+    const instance = plainToClass(
+      metadata.metatype as ClassConstructor<never>,
+      value,
+    );
     await this.verifyInjectMetadata(instance);
 
     return instance as T;
   }
 
-  private async verifyInjectMetadata(instance: any): Promise<void> {
+  private async verifyInjectMetadata(instance: never): Promise<void> {
     const metadataKeys: Array<InjectorMetadata<unknown>> = Reflect.getMetadata(
       APPLY_INJECTOR_KEY,
       instance,
@@ -30,10 +33,8 @@ export class ApplyInjectionPipe implements PipeTransform {
       await this.applyInjection(metadataKeys, instance);
     }
 
-    const metadataNestedKeys: Array<{ property: any; type: any }> = Reflect.getMetadata(
-      APPLY_INJECTOR_NESTED_KEY,
-      instance,
-    );
+    const metadataNestedKeys: Array<{ property: never; type: never }> =
+      Reflect.getMetadata(APPLY_INJECTOR_NESTED_KEY, instance);
 
     if (metadataNestedKeys?.length) {
       for (const { property } of metadataNestedKeys) {
@@ -49,6 +50,7 @@ export class ApplyInjectionPipe implements PipeTransform {
 
   private async applyInjection(
     metadataKeys: InjectorMetadata<unknown>[],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any,
   ): Promise<void> {
     for (const metadataKey of metadataKeys) {
