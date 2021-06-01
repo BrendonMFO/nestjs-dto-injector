@@ -1,5 +1,4 @@
 import { Test } from '@nestjs/testing';
-import { ModuleRef } from '@nestjs/core';
 import { ArgumentMetadata } from '@nestjs/common';
 import { ApplyInjectionPipe } from './apply-injection.pipe';
 import { Injector } from '../interfaces/injector.interface';
