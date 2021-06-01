@@ -1,0 +1,12 @@
+{
+	"name": "Nestjs Dto Injector",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": { "VARIANT": "16" }
+	},
+	"extensions": [
+		"wallabyjs.wallaby-vscode",
+		"dbaeumer.vscode-eslint"
+	],
+	"remoteUser": "node"
+}
