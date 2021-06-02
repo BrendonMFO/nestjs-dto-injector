@@ -1,10 +1,11 @@
 import { Test } from '@nestjs/testing';
-import { ArgumentMetadata } from '@nestjs/common';
+import { ArgumentMetadata, Injectable } from '@nestjs/common';
 import { ApplyInjectionPipe } from './apply-injection.pipe';
 import { Injector } from '../interfaces/injector.interface';
 import { ApplyInjection } from '../decorators/apply-injection.decorator';
 import { ApplyInjectionNested } from '../decorators/apply-injection-nested.decorator';
 
+@Injectable()
 class TestInjector implements Injector<string> {
   async apply(): Promise<string> {
     return 'test';
@@ -32,7 +33,7 @@ describe('ApplyInjection', () => {
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
-      providers: [ApplyInjectionPipe],
+      providers: [ApplyInjectionPipe, TestInjector],
     }).compile();
     applyInjectionPipe = module.get(ApplyInjectionPipe);
   });

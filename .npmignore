@@ -1,7 +1,7 @@
 /src
 /test
 /.devcontainer
-wallaby.json
+wallaby.js
 package-lock.json
 tsconfig.json
 jest.config.js

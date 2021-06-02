@@ -54,7 +54,7 @@ export class ApplyInjectionPipe implements PipeTransform {
     value: any,
   ): Promise<void> {
     for (const metadataKey of metadataKeys) {
-      const injectorInstance: Injector<unknown> = await this.moduleRef.create(
+      const injectorInstance: Injector<unknown> = await this.moduleRef.resolve(
         metadataKey.injectorType,
       );
       const result = await injectorInstance.apply(value);
