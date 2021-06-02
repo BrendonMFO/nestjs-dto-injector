@@ -1,6 +1,6 @@
 {
   "name": "nestjs-dto-injector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Inject any value directly into the dto classes",
   "main": "lib/index.js",
   "types": "lib",
